@@ -1,6 +1,6 @@
 import type { Config } from 'tailwindcss';
-const primary = '#c67f41'; // Gold
-const primaryDark = '#805734'; // Gold Dark
+const primary = '#F4A460'; // Gold
+const primaryDark = '#c67f41'; // Gold Dark
 
 const config: Config = {
   content: [
@@ -18,7 +18,7 @@ const config: Config = {
         primaryDark,
       },
       backgroundImage: {
-        hero: 'url("/images/hero.jpeg")',
+        hero: 'url("/images/hero.jpg")',
         'hero-2': 'url("/images/wines-3.jpg")',
         contact: 'url("/images/wines-2.jpeg")',
       },

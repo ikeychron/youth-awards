@@ -11,3 +11,11 @@ export interface IOldWinner {
 
 export type TOldWinners = IOldWinner[];
 
+export interface ICategory {
+  id: string;
+  name: string;
+  nameId: string;
+}
+
+export type TCategories = ICategory[];
+

@@ -1,5 +1,5 @@
 import { database } from '@/firebase/firebase';
-import { TOldWinners } from '@/interfaces';
+import { TCategories, TOldWinners } from '@/interfaces';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 
 export const getOldWinners = async (): Promise<TOldWinners> => {
@@ -14,6 +14,20 @@ export const getOldWinners = async (): Promise<TOldWinners> => {
       id: item.id,
       ...item.data(),
     })) as TOldWinners;
+  } catch (error) {
+    console.error('Error getting data:', error);
+    throw error;
+  }
+};
+
+export const getCategories = async (): Promise<TCategories> => {
+  try {
+    const querySnapshot = await getDocs(collection(database, 'categories'));
+
+    return querySnapshot.docs.map((item) => ({
+      id: item.id,
+      ...item.data(),
+    })) as TCategories;
   } catch (error) {
     console.error('Error getting data:', error);
     throw error;
