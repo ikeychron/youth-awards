@@ -15,10 +15,7 @@ const Nominateds = () => {
   }, [nominateds]);
 
   return (
-    <section
-      id="wines"
-      className="min-h-screen py-20 flex flex-col container mx-auto px-4"
-    >
+    <section className="min-h-screen py-20 flex flex-col container mx-auto px-4">
       <Label labelTop="Nuestros" labelUnder="nominados" />
 
       {nominatedsByCategory.map((items) => (

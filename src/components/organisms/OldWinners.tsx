@@ -9,10 +9,7 @@ const OldWinners = () => {
   const categories = useAppSelector((state) => state.nominateds.categories);
 
   return (
-    <section
-      id="wines"
-      className="min-h-screen py-20 flex flex-col container mx-auto px-4"
-    >
+    <section className="min-h-screen py-20 flex flex-col container mx-auto px-4">
       <Label labelTop="Antiguos" labelUnder="ganadores" />
 
       <div className="mt-8 uppercase text-primaryDark text-sm">
