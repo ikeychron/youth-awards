@@ -1,51 +1,54 @@
+import { FaUserClock, FaPeopleCarry } from 'react-icons/fa';
+import { FiCamera } from 'react-icons/fi';
+import {
+  FaPeopleGroup,
+  FaPersonHiking,
+  FaPersonShelter,
+} from 'react-icons/fa6';
+import { GiFaceToFace } from 'react-icons/gi';
+import { TbMoodHappy } from 'react-icons/tb';
+import { RiShirtLine } from 'react-icons/ri';
+import { IoPerson } from 'react-icons/io5';
+
 export const navbarOptions = [
-    {
-        href: '/',
-        name: 'Inicio'
-    },
-    {
-        href: '/nominados',
-        name: 'Nominados'
-    },
-    {
-        href: '/votos',
-        name: 'Votos'
-    },
-]
+  {
+    href: '/',
+    name: 'Inicio',
+  },
+  {
+    href: '/nominados',
+    name: 'Nominados',
+  },
+  {
+    href: '/votos',
+    name: 'Votos',
+  },
+];
 
-export const productsData = [
-    {
-        id: 0,
-        name: 'Juan Barrios',
-        category: 'Joven Serio'
-    },
-    {
-        id: 1,
-        name: 'Karem Barrios',
-        category: 'Joven Con Mejor Estilo'
-    },
-    {
-        id: 2,
-        name: 'Dionelvy Aguilera',
-        category: 'Joven Alegre'
-    },
-    {
-        id: 3,
-        name: 'Dionnely Aguilera',
-        category: 'Joven Responsable'
-    },
-]
-
-export const pageName = 'Premios Juventud'
-export const email = 'gourmetlicor@gmail.com'
+export const pageName = 'Premios Juventud';
+export const email = 'juanbarrios045@gmail.com';
 
 export const footerOptions = [
-    {
-        href: '/privacy',
-        name: 'Privacy'
-    },
-    {
-        href: '/terms',
-        name: 'Terms'
-    },
-] 
+  {
+    href: '/privacy',
+    name: 'Privacy',
+  },
+  {
+    href: '/terms',
+    name: 'Terms',
+  },
+];
+
+export const CATEGORY_ICONS = {
+  'most-punctual': FaUserClock,
+  'most-photogenic': FiCamera,
+  'most-collaborator': FaPeopleCarry,
+  'most-persistent': FaPersonHiking,
+  'most-outstading': FaPeopleGroup,
+  'most-new': FaPersonShelter,
+  'most-serious': GiFaceToFace,
+  'most-happy': TbMoodHappy,
+  'most-style': RiShirtLine,
+  '': IoPerson,
+};
+

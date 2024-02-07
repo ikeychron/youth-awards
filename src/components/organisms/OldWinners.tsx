@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { useAppSelector } from '@/lib/hooks';
 import { getCategoryByNameId } from '@/utils/category';
+import Label from '../atoms/Label';
 
 const OldWinners = () => {
   const oldWinners = useAppSelector((state) => state.nominateds.oldWinners);
@@ -12,10 +13,7 @@ const OldWinners = () => {
       id="wines"
       className="min-h-screen py-20 flex flex-col container mx-auto px-4"
     >
-      <div className="font-righteous text-primary font-bold">
-        <h1 className="text-primaryDark text-2xl sm:text-4xl">Antiguos</h1>
-        <h1 className="text-5xl sm:text-7xl leading-none">ganadores</h1>
-      </div>
+      <Label labelTop="Antiguos" labelUnder="ganadores" />
 
       <div className="mt-8 uppercase text-primaryDark text-sm">
         <p>Ganadores de Premios Juventud 2023:</p>

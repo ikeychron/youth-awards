@@ -18,9 +18,9 @@ const nominatedsSlice = createSlice({
   } as INominatedState,
   reducers: {
     initializeStore(state, action) {
-      state.categories = action.payload.categories;
-      state.nominateds = action.payload.nominateds;
-      state.oldWinners = action.payload.oldWinners;
+      state.categories = action.payload.categories || [];
+      state.nominateds = action.payload.nominateds || [];
+      state.oldWinners = action.payload.oldWinners || [];
     },
     setWinners(state, action) {
       state.winners = action.payload;

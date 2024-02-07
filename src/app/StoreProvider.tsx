@@ -3,17 +3,14 @@ import { useRef } from 'react';
 import { Provider } from 'react-redux';
 import { makeStore, AppStore } from '../lib/store';
 import { initializeStore } from '@/lib/reducers/nominatedsReducer';
-import { TCategories, TOldWinners } from '@/interfaces';
+import { TInitialData } from '@/interfaces';
 
 export default function StoreProvider({
   children,
   initialState,
 }: {
   children: React.ReactNode;
-  initialState: {
-    oldWinners: TOldWinners;
-    categories: TCategories;
-  };
+  initialState: TInitialData;
 }) {
   const storeRef = useRef<AppStore>();
   if (!storeRef.current) {
