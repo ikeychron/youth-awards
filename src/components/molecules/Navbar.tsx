@@ -39,7 +39,7 @@ const Navbar = () => {
         </ul>
 
         <div className="flex items-center gap-2">
-          <Link href="/nuevo-voto" className="hidden md:flex">
+          <Link href="/votos" className="hidden md:flex">
             <Button label="Votar" variant="white" className="uppercase" />
           </Link>
           <IconButton
@@ -62,7 +62,7 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            <Link href="/nuevo-voto" className="px-4 py-3">
+            <Link href="/votos" className="px-4 py-3">
               Votar
             </Link>
           </nav>
