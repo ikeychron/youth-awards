@@ -9,6 +9,7 @@ import { GiFaceToFace } from 'react-icons/gi';
 import { TbMoodHappy } from 'react-icons/tb';
 import { RiShirtLine } from 'react-icons/ri';
 import { IoPerson } from 'react-icons/io5';
+import { MdAdminPanelSettings } from 'react-icons/md';
 
 export const navbarOptions = [
   {
@@ -49,5 +50,7 @@ export const CATEGORY_ICONS = {
   'most-serious': GiFaceToFace,
   'most-happy': TbMoodHappy,
   'most-style': RiShirtLine,
+  'most-responsible': MdAdminPanelSettings,
   '': IoPerson,
 };
+
