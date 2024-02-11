@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import Button from '../atoms/Button';
+// import Link from 'next/link';
+// import Button from '../atoms/Button';
 import Label from '../atoms/Label';
 
 const Votes = () => {
@@ -33,7 +33,7 @@ const Votes = () => {
               >
                 1
               </th>
-              <td className="px-6 py-4">Juan Carlos Barrios</td>
+              <td className="px-6 py-4">Carlos Barrios</td>
               <td className="px-6 py-4">06-02-2024 02:00 PM</td>
             </tr>
           </tbody>
@@ -46,16 +46,17 @@ const Votes = () => {
           </tfoot>
         </table>
       </div>
-
+      {/* 
       <div className="flex items-center gap-3 mt-10">
-        <Link href="/nuevo-voto">
+         <Link href="/nuevo-voto">
           <Button label="Nuevo voto" variant="white" />
         </Link>
-        {/* <Button label="Generar resultado" />
+        <Button label="Generar resultado" />
         <Link href="/nuevo-nominado">
           <Button label="Crear nominado" variant="secondary" />
-        </Link> */}
+        </Link> 
       </div>
+      */}
     </section>
   );
 };
