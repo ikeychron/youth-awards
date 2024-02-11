@@ -18,36 +18,38 @@ const Nominateds = () => {
     <section className="min-h-screen py-20 flex flex-col container mx-auto px-4">
       <Label labelTop="Nuestros" labelUnder="nominados" />
 
-      {nominatedsByCategory.map((items) => (
-        <div className="flex flex-col mt-14" key={items.category.id}>
-          <div className="uppercase text-primaryDark text-sm">
-            <p>Nominados a {items.category.name}</p>
-          </div>
+      {nominatedsByCategory.map((items) =>
+        items.nominateds.length > 0 ? (
+          <div className="flex flex-col mt-14" key={items.category.id}>
+            <div className="uppercase text-primaryDark text-sm">
+              <p>Nominados a {items.category.name}</p>
+            </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 w-full mt-4 gap-3 sm:gap-4 text-center">
-            {items.nominateds.map((item, i) => (
-              <div
-                className="border border-primary flex flex-col hover:shadow-md"
-                key={i}
-              >
-                <Image
-                  src={item.image}
-                  alt="Wine image"
-                  width={400}
-                  height={600}
-                  className="h-80 w-full object-center object-cover"
-                />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 w-full mt-4 gap-3 sm:gap-4 text-center">
+              {items.nominateds.map((item, i) => (
+                <div
+                  className="border border-primary flex flex-col hover:shadow-md"
+                  key={i}
+                >
+                  <Image
+                    src={item.image}
+                    alt="Wine image"
+                    width={400}
+                    height={600}
+                    className="h-80 w-full object-center object-cover"
+                  />
 
-                <div className="p-5 flex flex-col items-center justify-center gap-2 text-sm capitalize font-light">
-                  <p className="font-bold text-primary text-xl font-righteous">
-                    {item.name}
-                  </p>
+                  <div className="p-5 flex flex-col items-center justify-center gap-2 text-sm capitalize font-light">
+                    <p className="font-bold text-primary text-xl font-righteous">
+                      {item.name}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ) : null
+      )}
     </section>
   );
 };

@@ -51,7 +51,10 @@ const Votes = () => {
         <Link href="/nuevo-voto">
           <Button label="Nuevo voto" variant="white" />
         </Link>
-        <Button label="Generar resultado" />
+        {/* <Button label="Generar resultado" />
+        <Link href="/nuevo-nominado">
+          <Button label="Crear nominado" variant="secondary" />
+        </Link> */}
       </div>
     </section>
   );

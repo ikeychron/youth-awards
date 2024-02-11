@@ -1,11 +1,10 @@
-import { TCategories, TOldWinners } from '@/interfaces';
+import { TCategories, TNominateds /* TOldWinners */ } from '@/interfaces';
 import { createSlice } from '@reduxjs/toolkit';
 
 interface INominatedState {
   categories: TCategories;
-  nominateds: TOldWinners;
-  winners: TOldWinners;
-  oldWinners: TOldWinners;
+  nominateds: TNominateds;
+  winners: TNominateds;
 }
 
 const nominatedsSlice = createSlice({
@@ -20,7 +19,6 @@ const nominatedsSlice = createSlice({
     initializeStore(state, action) {
       state.categories = action.payload.categories || [];
       state.nominateds = action.payload.nominateds || [];
-      state.oldWinners = action.payload.oldWinners || [];
     },
     setWinners(state, action) {
       state.winners = action.payload;

@@ -1,10 +1,11 @@
 import { twMerge } from 'tailwind-merge';
 
-export interface IInput extends React.InputHTMLAttributes<HTMLInputElement> {}
+export interface ISelect
+  extends React.SelectHTMLAttributes<HTMLSelectElement> {}
 
-const Input = ({ className, children, disabled, ...rest }: IInput) => {
+const Select = ({ className, children, disabled, ...rest }: ISelect) => {
   return (
-    <input
+    <select
       disabled={disabled}
       className={twMerge(
         'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm outline-none focus:ring-primary focus:border-primary block w-full p-2.5',
@@ -12,9 +13,11 @@ const Input = ({ className, children, disabled, ...rest }: IInput) => {
         className
       )}
       {...rest}
-    />
+    >
+      {children}
+    </select>
   );
 };
 
-export default Input;
+export default Select;
 

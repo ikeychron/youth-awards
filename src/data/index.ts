@@ -51,4 +51,3 @@ export const CATEGORY_ICONS = {
   'most-style': RiShirtLine,
   '': IoPerson,
 };
-

@@ -1,13 +1,22 @@
 import { twMerge } from 'tailwind-merge';
-import Input from '../atoms/Input';
+import Input, { IInput } from '../atoms/Input';
+import Select, { ISelect } from '../atoms/Select';
 
-interface iFormControl {
+interface IFormControl {
   label: string;
-  labelProps: React.LabelHTMLAttributes<HTMLLabelElement>;
-  inputProps: React.InputHTMLAttributes<HTMLInputElement>;
+  labelProps?: React.LabelHTMLAttributes<HTMLLabelElement>;
+  inputProps?: IInput;
+  selectProps?: ISelect;
+  select?: boolean;
 }
 
-const FormControl = ({ label, labelProps, inputProps }: iFormControl) => {
+const FormControl = ({
+  label,
+  labelProps,
+  inputProps,
+  selectProps,
+  select = false,
+}: IFormControl) => {
   return (
     <div className="flex flex-col gap-2">
       <label
@@ -16,7 +25,7 @@ const FormControl = ({ label, labelProps, inputProps }: iFormControl) => {
       >
         {label}
       </label>
-      <Input {...inputProps} />
+      {!select ? <Input {...inputProps} /> : <Select {...selectProps} />}
     </div>
   );
 };

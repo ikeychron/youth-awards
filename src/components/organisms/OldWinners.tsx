@@ -2,10 +2,10 @@
 import Image from 'next/image';
 import { useAppSelector } from '@/lib/hooks';
 import { getCategoryByNameId } from '@/utils/category';
+import oldWinners from '@/data/oldWinners';
 import Label from '../atoms/Label';
 
 const OldWinners = () => {
-  const oldWinners = useAppSelector((state) => state.nominateds.oldWinners);
   const categories = useAppSelector((state) => state.nominateds.categories);
 
   return (
