@@ -1,4 +1,4 @@
-import { INewNominated } from '@/components/organisms/NewNominatedForm';
+import { INewNominated } from '@/components/organisms/CreateNominatedForm';
 import { authService, database } from '@/firebase/firebase';
 import {
   TCategories,
