@@ -1,8 +1,16 @@
-// import Link from 'next/link';
-// import Button from '../atoms/Button';
+'use client';
+import Link from 'next/link';
+import { useAppSelector } from '@/lib/hooks';
+import Button from '../atoms/Button';
 import Label from '../atoms/Label';
 
 const Votes = () => {
+  const email = useAppSelector((state) => state.auth.email);
+  const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
+  const isReady = useAppSelector((state) => state.auth.isReady);
+
+  const isAuth = isAuthenticated && isReady;
+
   return (
     <section className="min-h-screen py-20 flex flex-col container mx-auto px-4">
       <Label labelTop="Lista de" labelUnder="votos" />
@@ -46,17 +54,18 @@ const Votes = () => {
           </tfoot>
         </table>
       </div>
-      {/* 
-      <div className="flex items-center gap-3 mt-10">
-         <Link href="/nuevo-voto">
-          <Button label="Nuevo voto" variant="white" />
-        </Link>
-        <Button label="Generar resultado" />
-        <Link href="/nuevo-nominado">
-          <Button label="Crear nominado" variant="secondary" />
-        </Link> 
-      </div>
-      */}
+
+      {isAuth && (
+        <div className="flex items-center gap-3 mt-10">
+          <Link href="/nuevo-voto">
+            <Button label="Nuevo voto" variant="white" />
+          </Link>
+          <Button label="Generar resultado" />
+          <Link href="/crear-nominado">
+            <Button label="Crear nominado" variant="secondary" />
+          </Link>
+        </div>
+      )}
     </section>
   );
 };

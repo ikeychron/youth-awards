@@ -1,15 +1,15 @@
 import Navbar from '@/components/molecules/Navbar';
 import Footer from '@/components/molecules/Footer';
-import NewNominatedForm from '@/components/organisms/NewNominatedForm';
+import CreateNominatedForm from '@/components/organisms/CreateNominatedForm';
 import { getImagesNominateds } from '@/services/firebaseService';
 
-export default async function NewNominatedPage() {
+export default async function CreateNominatedPage() {
   const nominatedsImage = await getImagesNominateds();
 
   return (
     <main>
       <Navbar />
-      <NewNominatedForm nominatedsImage={nominatedsImage} />
+      <CreateNominatedForm nominatedsImage={nominatedsImage} />
       <Footer />
     </main>
   );

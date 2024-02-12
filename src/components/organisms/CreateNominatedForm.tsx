@@ -16,7 +16,7 @@ export interface INewNominated {
   image: string;
 }
 
-const NewNominatedForm = ({
+const CreateNominatedForm = ({
   nominatedsImage,
 }: {
   nominatedsImage: string[];
@@ -35,7 +35,15 @@ const NewNominatedForm = ({
       }
 
       await createNominated(nominated);
-    } catch (error) {}
+      setNominated({
+        name: '',
+        category: '',
+        image: '',
+      });
+      alert('Nominado creado correctamente');
+    } catch (error) {
+      alert(error);
+    }
   };
   console.log(nominated);
 
@@ -128,5 +136,5 @@ const NewNominatedForm = ({
   );
 };
 
-export default NewNominatedForm;
+export default CreateNominatedForm;
 

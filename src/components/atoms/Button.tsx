@@ -22,6 +22,7 @@ interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = ({
   label,
   className,
+  disabled,
   variant = 'primary',
   ...rest
 }: IButton) => {
@@ -30,8 +31,10 @@ const Button = ({
       className={twMerge(
         'px-5 py-2.5 rounded-full font-bold text-xs',
         BUTTON_VARIANTS[variant as 'primary'],
+        disabled ? 'opacity-50' : '',
         className
       )}
+      disabled={disabled}
       {...rest}
     >
       {label}

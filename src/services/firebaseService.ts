@@ -1,11 +1,12 @@
 import { INewNominated } from '@/components/organisms/NewNominatedForm';
-import { database } from '@/firebase/firebase';
+import { authService, database } from '@/firebase/firebase';
 import {
   TCategories,
   TInitialData,
   TNominateds,
   // TOldWinners,
 } from '@/interfaces';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, getDocs, addDoc } from 'firebase/firestore';
 import { getStorage, ref, listAll, getDownloadURL } from 'firebase/storage';
 
@@ -117,6 +118,25 @@ export const createNominated = async (nominated: INewNominated) => {
     console.log('Document written with ID: ', docRef.id);
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const loginService = async ({
+  email,
+  password,
+}: {
+  email: string;
+  password: string;
+}) => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      authService,
+      email,
+      password
+    );
+    return userCredential;
+  } catch (error) {
+    throw Error(error as any);
   }
 };
 

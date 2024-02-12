@@ -33,7 +33,7 @@ const Nominateds = () => {
                 >
                   <Image
                     src={item.image}
-                    alt="Wine image"
+                    alt="Nominated image"
                     width={400}
                     height={600}
                     className="h-80 w-full object-center object-cover"
