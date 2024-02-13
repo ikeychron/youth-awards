@@ -13,14 +13,16 @@ export const getNominatedsByCategory = (
   nominateds: TNominateds,
   categories: TCategories
 ) => {
-  return categories.map((category) => {
-    return {
-      category,
-      nominateds: nominateds.filter(
-        (nominated) => nominated.category === category.nameId
-      ),
-    };
-  });
+  return categories
+    .filter((item) => item.active)
+    .map((category) => {
+      return {
+        category,
+        nominateds: nominateds.filter(
+          (nominated) => nominated.category === category.nameId
+        ),
+      };
+    });
 };
 
 export const getIconByCategory = (categoryNameId: string = ''): IconType => {

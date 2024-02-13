@@ -16,6 +16,7 @@ export interface ICategory {
   id: string;
   name: string;
   nameId: string;
+  active: boolean;
 }
 
 export type TCategories = ICategory[];
@@ -31,5 +32,17 @@ export interface TInitialData {
   categories: TCategories;
   nominateds: TNominateds;
   // oldWinners: TOldWinners;
+}
+
+export interface IVote {
+  id?: string;
+  fullname: string;
+  questions: {
+    howDefine: string;
+    forMeIs: string;
+    forThisYear: string;
+  };
+  votes: Record<string, INominated>;
+  created: Date | number;
 }
 

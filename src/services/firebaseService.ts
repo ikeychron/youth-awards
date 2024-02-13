@@ -1,32 +1,32 @@
 import { INewNominated } from '@/components/organisms/CreateNominatedForm';
 import { authService, database } from '@/firebase/firebase';
 import {
+  IVote,
   TCategories,
   TInitialData,
   TNominateds,
   // TOldWinners,
 } from '@/interfaces';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { collection, getDocs, addDoc } from 'firebase/firestore';
+import {
+  collection,
+  getDocs,
+  addDoc,
+  onSnapshot,
+  QuerySnapshot,
+} from 'firebase/firestore';
 import { getStorage, ref, listAll, getDownloadURL } from 'firebase/storage';
 
-// export const getOldWinners = async (): Promise<TOldWinners> => {
-//   try {
-//     const q = query(
-//       collection(database, 'old-winners'),
-//       where('winner', '==', true)
-//     );
-
-//     const querySnapshot = await getDocs(q);
-//     return querySnapshot.docs.map((item) => ({
-//       id: item.id,
-//       ...item.data(),
-//     })) as TOldWinners;
-//   } catch (error) {
-//     console.error('Error getting data:', error);
-//     throw error;
-//   }
-// };
+export const getVotes = (callback: (item: QuerySnapshot) => void) => {
+  try {
+    return onSnapshot(collection(database, 'votes'), (querySnapshot) => {
+      callback(querySnapshot);
+    });
+  } catch (error) {
+    console.error('Error getting data:', error);
+    throw error;
+  }
+};
 
 export const getNominateds = async (): Promise<TNominateds> => {
   try {
@@ -41,20 +41,6 @@ export const getNominateds = async (): Promise<TNominateds> => {
     throw error;
   }
 };
-
-// export const getNominateds = async (): Promise<TNominateds> => {
-//   try {
-//     const querySnapshot = await getDocs(collection(database, 'nominateds'));
-
-//     return querySnapshot.docs.map((item) => ({
-//       id: item.id,
-//       ...item.data(),
-//     })) as TNominateds;
-//   } catch (error) {
-//     console.error('Error getting data:', error);
-//     throw error;
-//   }
-// };
 
 export const getCategories = async (): Promise<TCategories> => {
   try {
@@ -103,6 +89,16 @@ export const getImagesNominateds = async (): Promise<string[]> => {
   } catch (error) {
     console.log(error);
     return [];
+  }
+};
+
+export const createVote = async (vote: IVote) => {
+  try {
+    const docRef = await addDoc(collection(database, 'votes'), vote);
+    console.log('Document written with ID: ', docRef.id);
+  } catch (error) {
+    console.log(error);
+    throw Error(error as any);
   }
 };
 

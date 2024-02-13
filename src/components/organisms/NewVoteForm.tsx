@@ -1,22 +1,84 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import { useAppSelector } from '@/lib/hooks';
 import Button from '../atoms/Button';
 import Label from '../atoms/Label';
 import FormControl from '../molecules/FormControl';
 import { useState } from 'react';
+import NominatedItem from '../molecules/NominatedItem';
+import { INominated, IVote } from '@/interfaces';
+import { createVote } from '@/services/firebaseService';
 
 const STEPS_LABEL = ['Completa los campos', 'Vota por tus preferidos'];
 
 const NewVoteForm = () => {
-  const [step, setStep] = useState(1);
+  const router = useRouter();
+  const [step, setStep] = useState(0);
   const [fullname, setFullname] = useState('');
   const [howDefine, setHowDefine] = useState('');
   const [forMeIs, setForMeIs] = useState('');
   const [forThisYear, setForThisYear] = useState('');
 
+  const [indexCategory, setIndexCategory] = useState(0);
+  const [votes, setVotes] = useState<Record<string, INominated>>({});
+  const [disabled, setDisabled] = useState(false);
+
+  const categories = useAppSelector(
+    (state) => state.nominateds.categories
+  ).filter((item) => item.active);
+  const nominateds = useAppSelector((state) => state.nominateds.nominateds);
+  const categoryStep = categories[indexCategory];
+
+  const handleBack = () => {
+    if (step === 1 && indexCategory === 0) {
+      setStep(0);
+    } else {
+      setIndexCategory((prev) => prev - 1);
+    }
+  };
+
+  /* Last vote and last step */
+  const lastStepVote = step === 1 && categories.length === indexCategory + 1;
+
   const handleNext = () => {
     if (step === 0) {
       setStep(1);
+    }
+
+    if (step === 1 && categories.length !== indexCategory + 1) {
+      setIndexCategory((prev) => prev + 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    if (lastStepVote) {
+      if (Object.keys(votes).length !== categories.length) {
+        alert('Te hace falta votar en una categoría');
+      } else {
+        handleSubmit();
+      }
+    }
+  };
+
+  const handleSubmit = async () => {
+    try {
+      setDisabled(true);
+      const data: IVote = {
+        fullname,
+        questions: {
+          forMeIs,
+          forThisYear,
+          howDefine,
+        },
+        created: Date.now(),
+        votes,
+      };
+      await createVote(data);
+      router.push('/votos');
+      alert('Se ha creado tu voto correctamente');
+      setDisabled(false);
+    } catch (error) {
+      alert(error);
+      console.log(error);
     }
   };
 
@@ -29,9 +91,8 @@ const NewVoteForm = () => {
         forThisYear.length < 12
       );
     }
+    if (step === 1) return disabled;
   };
-
-  const categories = useAppSelector((state) => state.nominateds.categories);
 
   return (
     <section className="min-h-screen py-20 flex flex-col container mx-auto px-4">
@@ -128,21 +189,41 @@ const NewVoteForm = () => {
       {step === 1 && (
         <div className="flex flex-col gap-6">
           <p className="text-sm text-primary">
-            Solo puedes votar por un nominado por categoría.
+            Solo puedes votar un nominado por categoría.
           </p>
 
-          <h2 className="capitalize font-bold text-xl">
-            Nominados a {categories[0].name}
-          </h2>
+          <div className="flex-col-reverse sm:flex-row font-bold text-xl flex items-center justify-between">
+            <h2 className="capitalize">Nominados a {categoryStep.name}</h2>
+
+            <h2>
+              {indexCategory + 1} de {categories.length}
+            </h2>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 w-full gap-3 sm:gap-4 text-center">
+            {nominateds
+              .filter((item) => item.category === categoryStep.nameId)
+              .map((item, i) => (
+                <NominatedItem
+                  nominated={item}
+                  isSelected={item.id === votes?.[categoryStep.nameId]?.id}
+                  isVoting
+                  onSelect={(item) => {
+                    setVotes({ ...votes, [categoryStep.nameId]: item });
+                  }}
+                  key={i}
+                />
+              ))}
+          </div>
         </div>
       )}
 
       <div className="flex items-center gap-3 mt-10">
-        {/* <Link href="/nuevo-voto">
-          <Button label="Ir a la lista de votos" variant="white" />
-        </Link> */}
+        {step === 1 && (
+          <Button label="Atras" variant="secondary" onClick={handleBack} />
+        )}
         <Button
-          label="Siguiente"
+          label={lastStepVote ? 'Confirmar votos' : 'Siguiente'}
           variant="white"
           onClick={handleNext}
           disabled={checkDisabled()}
