@@ -62,7 +62,7 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            <Link href="/votos" className="px-4 py-3">
+            <Link href="/nuevo-voto" className="px-4 py-3">
               Votar
             </Link>
           </nav>
