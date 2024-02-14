@@ -29,7 +29,7 @@ export type TNominatedsByCategory = INominatedByCategory[];
 
 export interface TInitialData {
   categories: TCategories;
-  nominateds: TNominateds;
+  // nominateds: TNominateds;
   // oldWinners: TOldWinners;
 }
 

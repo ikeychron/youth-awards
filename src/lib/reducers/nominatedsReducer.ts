@@ -25,11 +25,9 @@ const nominatedsSlice = createSlice({
   reducers: {
     initializeStore(state, action) {
       state.categories = action.payload.categories || [];
-      state.nominateds = action.payload.nominateds || [];
-      state.winners =
-        action.payload.nominateds?.filter(
-          (nominated: INominated) => nominated.winner
-        ) || [];
+    },
+    setNominateds(state, action) {
+      state.nominateds = action.payload;
     },
     setVotes(state, action) {
       state.votes = action.payload;
@@ -74,7 +72,13 @@ const nominatedsSlice = createSlice({
 // Extract the action creators object and the reducer
 const { actions, reducer } = nominatedsSlice;
 // Extract and export each action creator by name
-export const { initializeStore, setVotes, addWinners, resetWinners } = actions;
+export const {
+  initializeStore,
+  setNominateds,
+  setVotes,
+  addWinners,
+  resetWinners,
+} = actions;
 // Export the reducer, either as a default or named export
 export default reducer;
 

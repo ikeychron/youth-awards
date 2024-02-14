@@ -68,13 +68,9 @@ export const getCategories = async (): Promise<TCategories> => {
 export const getInitialData = async (): Promise<TInitialData> => {
   try {
     const categories = await getCategories();
-    const nominateds = await getNominateds();
-    // const oldWinners = await getOldWinners();
 
     return {
       categories,
-      nominateds,
-      // oldWinners,
     };
   } catch (error) {
     console.error('Error getting data:', error);
