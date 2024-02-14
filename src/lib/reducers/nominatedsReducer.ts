@@ -28,6 +28,9 @@ const nominatedsSlice = createSlice({
     },
     setNominateds(state, action) {
       state.nominateds = action.payload;
+      state.winners =
+        action.payload?.filter((nominated: INominated) => nominated.winner) ||
+        [];
     },
     setVotes(state, action) {
       state.votes = action.payload;
