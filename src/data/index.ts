@@ -4,6 +4,7 @@ import {
   FaPeopleGroup,
   FaPersonHiking,
   FaPersonShelter,
+  FaPersonWalking,
 } from 'react-icons/fa6';
 import { GiFaceToFace } from 'react-icons/gi';
 import { TbMoodHappy } from 'react-icons/tb';
@@ -51,6 +52,7 @@ export const CATEGORY_ICONS = {
   'most-happy': TbMoodHappy,
   'most-style': RiShirtLine,
   'most-responsible': MdAdminPanelSettings,
+  'most-assist': FaPersonWalking,
   '': IoPerson,
 };
 

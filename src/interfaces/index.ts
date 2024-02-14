@@ -2,10 +2,9 @@ export interface INominated {
   id: string;
   name: string;
   winner: boolean;
-  created: number | Date;
+  created: number | Date | string;
   votes: number;
   image: string;
-  votesUser: [];
   category: string;
 }
 
@@ -43,6 +42,6 @@ export interface IVote {
     forThisYear: string;
   };
   votes: Record<string, INominated>;
-  created: Date | number;
+  created: Date | number | string;
 }
 

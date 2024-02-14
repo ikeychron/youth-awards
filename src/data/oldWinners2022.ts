@@ -2,7 +2,6 @@ export default [
   {
     id: '8C5RwZ4t8SL7YnJtuRry',
     votes: 21,
-    votesUser: [],
     name: 'Dionnely Aguilera',
     winner: true,
     created: 1643395131988,
@@ -17,7 +16,6 @@ export default [
     name: 'Juan Barrios',
     category: 'most-serious',
     winner: true,
-    votesUser: [],
     votes: 21,
     created: 1643324433771,
   },
@@ -27,7 +25,6 @@ export default [
     created: 1643394510890,
     winner: true,
     votes: 22,
-    votesUser: [],
     image:
       'https://firebasestorage.googleapis.com/v0/b/vote-app-e13ca.appspot.com/o/nominateds%2FrBoiAM3xghBhuhd4ouxm6d.jpeg?alt=media&token=7d595f0b-7ccb-48d2-ad9b-9cb1a244f4e5',
     name: 'Maikel Vargas',
@@ -41,7 +38,6 @@ export default [
     image:
       'https://firebasestorage.googleapis.com/v0/b/vote-app-e13ca.appspot.com/o/nominateds%2FdrcdkVDAoVeTW6upm45qSt.jpeg?alt=media&token=70d0347d-292e-4ae8-a0c5-ef0b2fc30515',
     votes: 15,
-    votesUser: [],
   },
   {
     id: 'ash3ohl0QqYPH3aTnxow',
@@ -49,7 +45,6 @@ export default [
     winner: true,
     votes: 23,
     category: 'most-punctual',
-    votesUser: [],
     name: 'Yuserly Dueñez',
     image:
       'https://firebasestorage.googleapis.com/v0/b/vote-app-e13ca.appspot.com/o/nominateds%2F5TTDN6ZmeLhYmVxx7AHuap.jpeg?alt=media&token=269c6157-d33a-4475-86b5-6653e41628c9',
@@ -61,7 +56,6 @@ export default [
     category: 'most-collaborator',
     name: 'Ricardo Toro',
     created: 1643549263125,
-    votesUser: [],
     votes: 22,
     winner: true,
   },
@@ -74,12 +68,10 @@ export default [
     name: 'Melianny',
     votes: 28,
     created: 1643395347937,
-    votesUser: [],
   },
   {
     id: 'nVAwY6tAQ7C77OGEWqK1',
     category: 'most-photogenic',
-    votesUser: [],
     winner: true,
     created: 1643392255847,
     image:
@@ -89,7 +81,6 @@ export default [
   },
   {
     id: 'ujXc7DRozBx7SwsVpy8U',
-    votesUser: [],
     votes: 24,
     name: 'Maikel Vargas',
     created: 1643394468743,

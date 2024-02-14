@@ -4,11 +4,15 @@ import { twMerge } from 'tailwind-merge';
 
 const NominatedItem = ({
   nominated,
+  showVotes,
+  showCategory,
   isVoting,
   isSelected,
   onSelect,
 }: {
   nominated: INominated;
+  showVotes?: boolean;
+  showCategory?: string;
   isVoting?: boolean;
   isSelected?: boolean;
   onSelect?: (item: INominated) => void;
@@ -38,9 +42,12 @@ const NominatedItem = ({
       />
 
       <div className="p-5 flex flex-col items-center justify-center gap-2 text-sm capitalize font-light">
+        {showCategory && <p className="capitalize">{showCategory}</p>}
         <p className="font-bold text-primary text-xl font-righteous">
           {nominated.name}
         </p>
+
+        {showVotes && <p>Con {nominated.votes} votos</p>}
       </div>
     </div>
   );

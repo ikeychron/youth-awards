@@ -1,6 +1,7 @@
 import { INewNominated } from '@/components/organisms/CreateNominatedForm';
 import { authService, database } from '@/firebase/firebase';
 import {
+  INominated,
   IVote,
   TCategories,
   TInitialData,
@@ -14,14 +15,22 @@ import {
   addDoc,
   onSnapshot,
   QuerySnapshot,
+  writeBatch,
+  doc,
+  DocumentReference,
+  query,
+  orderBy,
 } from 'firebase/firestore';
 import { getStorage, ref, listAll, getDownloadURL } from 'firebase/storage';
 
 export const getVotes = (callback: (item: QuerySnapshot) => void) => {
   try {
-    return onSnapshot(collection(database, 'votes'), (querySnapshot) => {
-      callback(querySnapshot);
-    });
+    return onSnapshot(
+      query(collection(database, 'votes'), orderBy('created')),
+      (querySnapshot) => {
+        callback(querySnapshot);
+      }
+    );
   } catch (error) {
     console.error('Error getting data:', error);
     throw error;
@@ -102,6 +111,40 @@ export const createVote = async (vote: IVote) => {
   }
 };
 
+export const updateNominateds = async (
+  nominateds: INominated[],
+  votesForDelete?: IVote[]
+) => {
+  try {
+    const batch = writeBatch(database);
+
+    for (const item of nominateds) {
+      const nominatedRef: DocumentReference = doc(
+        database,
+        'nominateds',
+        item.id
+      );
+      batch.update(nominatedRef, { ...item });
+    }
+
+    if (votesForDelete) {
+      for (const item of votesForDelete) {
+        const voteRef: DocumentReference = doc(
+          database,
+          'votes',
+          item.id as string
+        );
+        batch.delete(voteRef);
+      }
+    }
+
+    await batch.commit();
+  } catch (error) {
+    console.log(error);
+    throw Error(error as any);
+  }
+};
+
 export const createNominated = async (nominated: INewNominated) => {
   try {
     const docRef = await addDoc(collection(database, 'nominateds'), {
@@ -109,7 +152,6 @@ export const createNominated = async (nominated: INewNominated) => {
       winner: false,
       created: Date.now(),
       votes: 0,
-      votesUser: [],
     });
     console.log('Document written with ID: ', docRef.id);
   } catch (error) {

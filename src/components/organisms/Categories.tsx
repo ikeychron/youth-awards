@@ -13,7 +13,7 @@ const Categories = () => {
       <Label labelTop="Premiando a" labelUnder="la juventud" />
 
       <div className="mt-8 uppercase text-primaryDark text-sm">
-        <p>Nuestros nominados se categorizan por:</p>
+        <p>Nuestros nominados se han categorizado por:</p>
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 w-full mt-14 gap-3 sm:gap-4 text-center">
