@@ -187,9 +187,9 @@ const Votes = () => {
       </div>
 
       <div className="flex items-center gap-3 mt-10">
-        <Link href="/nuevo-voto">
+        {/* <Link href="/nuevo-voto">
           <Button label="Nuevo voto" variant="white" />
-        </Link>
+        </Link> */}
         {isAuth && (
           <>
             <Button label="Generar resultado" onClick={handleWinners} />
