@@ -29,7 +29,7 @@ export const navbarOptions = [
 
 export const pageName = 'Premios Juventud';
 export const email = 'juanbarrios045@gmail.com';
-export const enabledNewVote = true;
+export const enabledNewVote = false;
 
 export const footerOptions = [
   {
