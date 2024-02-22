@@ -12,6 +12,7 @@ import {
   setVotes,
   addWinners,
 } from '@/lib/reducers/nominatedsReducer';
+import { enabledNewVote } from '@/data';
 
 const Votes = () => {
   const dispatch = useAppDispatch();
@@ -187,9 +188,11 @@ const Votes = () => {
       </div>
 
       <div className="flex items-center gap-3 mt-10">
-        <Link href="/nuevo-voto">
-          <Button label="Nuevo voto" variant="white" />
-        </Link>
+        {enabledNewVote && (
+          <Link href="/nuevo-voto">
+            <Button label="Nuevo voto" variant="white" />
+          </Link>
+        )}
         {isAuth && (
           <>
             <Button label="Generar resultado" onClick={handleWinners} />

@@ -4,10 +4,11 @@ import { useAppSelector } from '@/lib/hooks';
 import Button from '../atoms/Button';
 import Label from '../atoms/Label';
 import FormControl from '../molecules/FormControl';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import NominatedItem from '../molecules/NominatedItem';
 import { INominated, IVote } from '@/interfaces';
 import { createVote } from '@/services/firebaseService';
+import { enabledNewVote } from '@/data';
 
 const STEPS_LABEL = ['Completa los campos', 'Vota por tus preferidos'];
 
@@ -28,6 +29,12 @@ const NewVoteForm = () => {
   ).filter((item) => item.active);
   const nominateds = useAppSelector((state) => state.nominateds.nominateds);
   const categoryStep = categories[indexCategory];
+
+  useEffect(() => {
+    if (!enabledNewVote) {
+      router.push('/votos');
+    }
+  }, [enabledNewVote]);
 
   const handleBack = () => {
     if (step === 1 && indexCategory === 0) {
