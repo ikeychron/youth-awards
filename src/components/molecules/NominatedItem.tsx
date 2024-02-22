@@ -47,7 +47,8 @@ const NominatedItem = ({
           {nominated.name}
         </p>
 
-        {showVotes && <p>Con {nominated.votes} votos</p>}
+        {/* {showVotes && <p>Con {nominated.votes} votos</p>} */}
+        <p>Con {nominated.votes} votos</p>
       </div>
     </div>
   );
