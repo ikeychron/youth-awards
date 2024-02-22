@@ -7,9 +7,6 @@ import { TNominatedsByCategory } from '@/interfaces';
 import NominatedItem from '../molecules/NominatedItem';
 
 const Nominateds = () => {
-  const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
-  const isReady = useAppSelector((state) => state.auth.isReady);
-
   const nominateds = useAppSelector((state) => state.nominateds.nominateds);
   const categories = useAppSelector((state) => state.nominateds.categories);
 
@@ -30,11 +27,7 @@ const Nominateds = () => {
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 w-full mt-4 gap-3 sm:gap-4 text-center">
               {items.nominateds.map((item, i) => (
-                <NominatedItem
-                  nominated={item}
-                  key={i}
-                  showVotes={isAuthenticated && isReady}
-                />
+                <NominatedItem nominated={item} key={i} />
               ))}
             </div>
           </div>

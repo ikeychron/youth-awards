@@ -109,6 +109,8 @@ const Votes = () => {
     },
     []);
 
+    console.log({ winners });
+
     dispatch(addWinners(finalNominateds));
     await updateNominateds(finalNominateds);
     alert('Se han generado los ganadores');

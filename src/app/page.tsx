@@ -12,7 +12,7 @@ export default function Home() {
     <main>
       <Hero />
       <Categories />
-      {/* <CurrentWinners /> */}
+      <CurrentWinners />
 
       <OldWinners
         data={[
