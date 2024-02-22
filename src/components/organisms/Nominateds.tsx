@@ -27,7 +27,7 @@ const Nominateds = () => {
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 w-full mt-4 gap-3 sm:gap-4 text-center">
               {items.nominateds.map((item, i) => (
-                <NominatedItem nominated={item} key={i} />
+                <NominatedItem nominated={item} key={i} showVotes />
               ))}
             </div>
           </div>
